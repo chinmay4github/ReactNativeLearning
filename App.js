@@ -4,13 +4,13 @@ import { StyleSheet, Text, View, Button, TextInput, FlatList } from 'react-nativ
 export default function App() {
 
   const [people, setPeople] = useState([
-    { name: 'Chinmay', key: '1' },
-    { name: 'Madhusudan', key: '2' },
-    { name: 'Himalyan', key: '3' },
-    { name: 'Bijay', key: '4' },
-    { name: 'Mohan', key: '5' },
-    { name: 'Santanu', key: '6' },
-    { name: 'Villna', key: '7' },
+    { name: 'Chinmay', id: '1' },
+    { name: 'Madhusudan', id: '2' },
+    { name: 'Himalyan', id: '3' },
+    { name: 'Bijay', id: '4' },
+    { name: 'Mohan', id: '5' },
+    { name: 'Santanu', id: '6' },
+    { name: 'Villna', id: '7' },
   ]);
 
   return (
@@ -18,6 +18,9 @@ export default function App() {
     <View style={styles.container}>
 
       <FlatList
+      numColumns={2}
+      keyExtractor={(item)=>item.id}
+
        data={people}
        renderItem = {({item})=> (
 
@@ -53,6 +56,8 @@ const styles = StyleSheet.create({
     // justifyContent: 'center',
   },
   items: {
+    marginHorizontal:24,
+    marginBottom:24,
     marginTop: 24,
     padding: 20,
     backgroundColor: "red",
