@@ -1,92 +1,60 @@
-import React ,{useState} from 'react';
-import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, Text, View, Button, TextInput, ScrollView } from 'react-native';
 
 export default function App() {
-  const [name,setName] = useState('Chinmay');
-  const [age,setAge] = useState('24');
 
-  const clickHandler = () => {
-
-    setName('Mohan Das') ;
-    setAge('34');
-
-  }
-
+  const [people, setPeople] = useState([
+    { name: 'Chinmay', key: '1' },
+    { name: 'Madhusudan', key: '2' },
+    { name: 'Himalyan', key: '3' },
+    { name: 'Bijay', key: '4' },
+    { name: 'Mohan', key: '5' },
+    { name: 'Santanu', key: '6' },
+    { name: 'Villna', key: '7' },
+  ]);
 
   return (
+
     <View style={styles.container}>
-      <View style={styles.header}>
+      <ScrollView>
+        {people.map((item) => {
 
-        <Text>Enter Your Name:</Text>
-        <TextInput 
-        style={styles.input}
-        placeholder="e.g John Doe"
-        onChangeText ={(val) => setName(val)}
-        />
-       
-        <Text style={styles.boldText}>My name is {name}</Text>
+          return (
+            <View key={item.key}>
+              <Text style={styles.items}>{item.name}</Text>
+            </View>
+          )
 
-        <Text>Enter Your Age:</Text>
-        <TextInput 
-        keyboardType='numeric'
-        style={styles.input}
-        placeholder="e.g 99"
-        onChangeText ={(val) => setAge(val)}
-        />
-       
-        <Text style={styles.boldText}>My age is {age}</Text>
+        })}
 
+      </ScrollView>
 
-      </View>
-      <View style={styles.buttonContainer}>
-        <Button title='update state' onPress={clickHandler}>
-
-        </Button>
-      </View>
-      
-      
     </View>
+
   );
 }
 
+
 const styles = StyleSheet.create({
-  container:{
-    flex:1,
-    backgroundColor:'#f79878',
-    alignItems:'center',
-    justifyContent:'center',
+  container: {
+    flex: 1,
+    backgroundColor: '#f79878',
+    paddingTop: 40,
+    paddingHorizontal: 20
+    // alignItems: 'center',
+    // justifyContent: 'center',
   },
-  header:{
-    backgroundColor:'pink',
-    padding:20
-  },
-  boldText:{
-    fontWeight:'bold',
-
-  },
-  body:{
-
-    backgroundColor:"yellow",
-    padding:20
-
-  },
-  buttonContainer:{
-    marginTop: 20,
-
-
-  },
-  input:{
-    borderWidth:1,
-    borderColor:"#777",
-    padding:8,
-    margin:10,
-    width:200,
+  items: {
+    marginTop: 24,
+    padding: 20,
+    backgroundColor: "red",
+    fontSize: 24
 
 
   }
 
-});
 
+});
 // const styles = StyleSheet.create({
 //   container:{
 //     flex:1,
